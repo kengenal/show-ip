@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-04 15:51+0000\n"
+"POT-Creation-Date: 2021-05-04 16:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,13 +29,17 @@ msgid "Polish"
 msgstr "Polski"
 
 #: show_ip/forms.py:10
-msgid "Set website addresses, if you need more then one use ':' to separate them"
-msgstr "Adres storny internetowe, jeżelli chcesz sprawdzić więcej niż jeden użyj ':' by je odseparować"
+msgid ""
+"Set website addresses, if you need more then one use ':' to separate them"
+msgstr ""
+"Adres storny internetowe, jeżelli chcesz sprawdzić więcej niż jeden użyj ':' "
+"by je odseparować"
 
-#: show_ip/forms.py:17
+#: show_ip/forms.py:16
 msgid "Field addresses or file cannot be empty"
 msgstr "Pole z adresem albo plik nie może być pusty"
 
-#: show_ip/views.py:8
-msgid "Hello"
-msgstr "Cześć"
+#: show_ip/templates/show_ip/index.html:4
+msgid "Check website ip"
+msgstr "Sprawdź ip strony internetowej"
+
