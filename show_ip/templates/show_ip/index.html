@@ -11,4 +11,9 @@
         {{ form.as_p }}
         <input type="submit" value="Submit">
     </form>
+    {% for i in ips %}
+        <h1>{{ i.ip }}</h1>
+    {% endfor %}
+
 {% endblock %}
+
