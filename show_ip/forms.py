@@ -2,14 +2,15 @@ import csv
 import itertools
 
 from django import forms
-from django.utils.translation import gettext as _
+from django.utils.translation import gettext_lazy as _
 
 
 class ShowIpForm(forms.Form):
     addresses = forms.CharField(widget=forms.Textarea, required=False,
                                 label=_("Set website addresses, if you need more then one use ':' to separate them"))
-    file = forms.FileField(widget=forms.ClearableFileInput(attrs={"multiple": False}), required=False)
-    get_scv = forms.BooleanField(required=False)
+    file = forms.FileField(label=_("Select CSV file"), widget=forms.ClearableFileInput(attrs={"multiple": False}),
+                           required=False)
+    get_scv = forms.BooleanField(label=_("Download csv file"), required=False)
 
     def clean(self):
         if self.cleaned_data.get("addresses"):
