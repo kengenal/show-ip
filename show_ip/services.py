@@ -11,7 +11,7 @@ def generate(hostnames):
 def get_cert(url, port=443, timeout=None):
     """Retrieve server's certificate at the specified address (host, port)."""
     parse = urlparse(url)
-    host = parse.path if parse.path else parse.netloc
+    host = parse.netloc if parse.netloc else parse.path
     try:
         with socket.create_connection((host, port), timeout=timeout) as sock:
             rq = sock.getpeername()

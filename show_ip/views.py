@@ -20,7 +20,7 @@ class ShowIpView(generic.View):
 
     def post(self, request):
         form = self.form_class(request.POST, request.FILES)
-        context = {"form": self.form_class}
+        context = {}
         if form.is_valid():
             clean = form.cleaned_data.get("addresses", [])
             context["ips"] = get_ips(clean)
@@ -34,4 +34,5 @@ class ShowIpView(generic.View):
                 for x in context["ips"]:
                     writer.writerow([x.get("host"), x.get("port"), x.get("ssl"), x.get("errors")])
                 return response
+        context["form"] = form
         return render(request, self.template_name, context)
