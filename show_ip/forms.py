@@ -6,11 +6,16 @@ from django.utils.translation import gettext_lazy as _
 
 
 class ShowIpForm(forms.Form):
-    addresses = forms.CharField(widget=forms.Textarea, required=False,
-                                label=_("Set website addresses, if you need more then one use ':' to separate them"))
-    file = forms.FileField(label=_("Select CSV file"), widget=forms.ClearableFileInput(attrs={"multiple": False}),
+    addresses = forms.CharField(
+        label=None,
+        widget=forms.TextInput(attrs={"class": "form-control", "placeholder": _("Address url"), "id": "address"})
+    )
+    file = forms.FileField(label=_("Load from csv file"),
+                           widget=forms.ClearableFileInput(attrs={"multiple": False, "class": "form-control"}),
                            required=False)
-    get_scv = forms.BooleanField(label=_("Download csv file"), required=False)
+    get_scv = forms.BooleanField(
+        label=_("Download csv file"), required=False,
+        widget=forms.CheckboxInput(attrs={"class": "form-check-input"}))
 
     def clean(self):
         if self.cleaned_data.get("addresses"):

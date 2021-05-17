@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Check website ip" %}{% endblock %}
+
+{% block body %}
+    <h1>Test</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="{% trans "Check" %}">
+    </form>
+    {% for i in ips %}
+        <h1>{{ i.ip }}</h1>
+    {% endfor %}
+
+{% endblock %}
+

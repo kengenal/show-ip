@@ -7,6 +7,7 @@ authors = ["kengenal"]
 [tool.poetry.dependencies]
 python = "^3.8"
 Django = "^3.2.1"
+django-crispy-forms = "^1.11.2"
 
 [tool.poetry.dev-dependencies]
 pytest-django = "^4.2.0"
