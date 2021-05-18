@@ -45,5 +45,5 @@ class TestShowIpView(BaseCSVTestCase):
 
         assert rq.headers["Content-Disposition"] == 'attachment; filename="host.csv"'
         assert rq.headers["Content-Type"] == "text/csv"
-        assert b'host,port,ssl,errors\r\n,443,,\r\n' in rq.content
+        assert b'host,ip,port,ssl,errors\r\n,localhost,443,,-\r\n' in rq.content
         assert rq.status_code == 200

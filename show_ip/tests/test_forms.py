@@ -32,3 +32,10 @@ class TestShowIpForm(BaseCSVTestCase):
 
             assert not form.is_valid()
             assert "file" in form.errors
+
+    def test_validate_with_wrong_file_extensions_should_be_return_validation_error(self, load_random_file):
+        with open(load_random_file, 'rb') as file:
+            form = ShowIpForm({}, {"file": SimpleUploadedFile(file.name, file.read())})
+
+            assert not form.is_valid()
+            assert "file" in form.errors
