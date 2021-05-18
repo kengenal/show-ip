@@ -19,7 +19,7 @@ class ShowIpView(generic.View):
         return render(request, self.template_name, {"form": self.form_class})
 
     def post(self, request):
-        form = self.form_class(request.POST, request.FILES)
+        form = self.form_class(data=request.POST, files=request.FILES)
         context = {}
         if form.is_valid():
             clean = form.cleaned_data.get("addresses", [])
@@ -30,9 +30,10 @@ class ShowIpView(generic.View):
                     headers={'Content-Disposition': 'attachment; filename="host.csv"'},
                 )
                 writer = csv.writer(response)
-                writer.writerow(["host", "port", "ssl", "errors"])
+                writer.writerow(["host", "ip", "port", "ssl", "errors"])
                 for x in context["ips"]:
-                    writer.writerow([x.get("host"), x.get("port"), x.get("ssl"), x.get("errors")])
+                    writer.writerow([x.get("host"), x.get("ip"), x.get("port"), x.get("ssl", "OK"),
+                                     x.get("errors", "-")])
                 return response
         context["form"] = form
         return render(request, self.template_name, context)

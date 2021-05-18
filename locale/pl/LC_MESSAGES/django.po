@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-17 12:13+0000\n"
+"POT-Creation-Date: 2021-05-18 08:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,25 +28,27 @@ msgstr "Angielski"
 msgid "Polish"
 msgstr "Polski"
 
-#: show_ip/forms.py:12
-#, fuzzy
-#| msgid "Url address, you can take many urls using ',' as separator"
+#: show_ip/forms.py:14
 msgid "Url address, you can take many urls using ':' as separator"
 msgstr "Adres url, możesz podać ich więcej oddzielając je ','"
 
-#: show_ip/forms.py:15
+#: show_ip/forms.py:18
 msgid "Load from csv file"
 msgstr "Załaduj z pliku csv"
 
-#: show_ip/forms.py:19
+#: show_ip/forms.py:21
+msgid "Not supported file"
+msgstr "Nie wspierany format pliku"
+
+#: show_ip/forms.py:24
 msgid "Download csv file"
 msgstr "Pobierz plik csv"
 
-#: show_ip/forms.py:32
+#: show_ip/forms.py:38
 msgid "Field addresses or file cannot be empty"
-msgstr "Pole z adresem albo plik nie może być pusty"
+msgstr "Pole z adresem albo plik nie może być puste"
 
-#: show_ip/templates/show_ip/index.html:5 show_ip/templates/show_ip/old.html:4
+#: show_ip/templates/show_ip/index.html:5
 msgid "Check website ip"
 msgstr "Sprawdź ip strony internetowej"
 
@@ -58,6 +60,5 @@ msgstr "Formularz"
 msgid "SLL Error code"
 msgstr "kod błędu SSL"
 
-#: show_ip/templates/show_ip/old.html:12
-msgid "Check"
-msgstr "Sprawdż"
+#~ msgid "Check"
+#~ msgstr "Sprawdż"
