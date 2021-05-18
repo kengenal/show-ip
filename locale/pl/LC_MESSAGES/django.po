@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-18 08:58+0000\n"
+"POT-Creation-Date: 2021-05-18 09:06+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -48,9 +48,13 @@ msgstr "Pobierz plik csv"
 msgid "Field addresses or file cannot be empty"
 msgstr "Pole z adresem albo plik nie może być puste"
 
-#: show_ip/services.py:27
+#: show_ip/services.py:30
 msgid "Website is not exists"
 msgstr "Taka strona nie istnieje"
+
+#: show_ip/services.py:32
+msgid "Incorrect url address"
+msgstr "Niepoprawny adres strony"
 
 #: show_ip/templates/show_ip/index.html:5
 msgid "Check website ip"
@@ -63,6 +67,3 @@ msgstr "Formularz"
 #: show_ip/templates/show_ip/index.html:89
 msgid "SLL Error code"
 msgstr "kod błędu SSL"
-
-#~ msgid "Check"
-#~ msgstr "Sprawdż"
