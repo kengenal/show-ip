@@ -1,6 +1,7 @@
 import socket
 import ssl
 from urllib.parse import urlparse
+from django.utils.translation import gettext_lazy as _
 
 
 def generate(hostnames):
@@ -22,6 +23,6 @@ def get_cert(url, port=443, timeout=None):
                     sslsock.getpeercert()
             except ssl.SSLCertVerificationError as err:
                 data["ssl"] = err
-    except socket.gaierror:
-        data = {"ip": None, "port": 443, "host": host, "errors": ["Website is not exists"]}
+    except (socket.gaierror, OSError):
+        data = {"ip": None, "port": 443, "host": host, "error": _("Website is not exists")}
     return data

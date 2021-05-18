@@ -46,6 +46,13 @@
                             </div>
                         {% endfor %}
                     {% endif %}
+                    {% for i in ips %}
+                        {% if "error" in i %}
+                            <div class="alert alert-danger">
+                                <strong>{{ i.host }} - {{ i.error|escape }}</strong>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
                     <form method="POST" class="form-group" id="form" enctype="multipart/form-data">
                         {% csrf_token %}
                         <div class="input-group pt-3 pb-3">
@@ -60,7 +67,8 @@
                             {{ form.get_scv.label_tag }}
                         </div>
                         <div class="form-group  pt-3 pb-3">
-                            <button type="submit" class="btn btn-primary" id="check"><i class="bi bi-check-lg"></i></button>
+                            <button type="submit" class="btn btn-primary" id="check"><i class="bi bi-check-lg"></i>
+                            </button>
                         </div>
                     </form>
                 </fieldset>
@@ -83,14 +91,17 @@
                 </thead>
                 <tbody>
                 {% for i in ips %}
-                    <tr>
-                        <th scope="row">{{ forloop.counter }}</th>
-                        <td>{{ i.host }}</td>
-                        <td>{{ i.ip }}</td>
-                        <td>{{ i.port }}</td>
-                        <td>{% if i.ssl %}<i class="bi bi-shield-fill-x text-danger"></i>{% else %}<i class="bi bi-shield-fill-check text-success"></i>{% endif %}</td>
-                        <td>{% if i.ssl %}{{ i.ssl }}{% else %}<i class="bi bi-dash"></i>{% endif %}</td>
-                    </tr>
+                    {% if "error" not in i %}
+                        <tr>
+                            <th scope="row">{{ forloop.counter }}</th>
+                            <td>{{ i.host }}</td>
+                            <td>{{ i.ip }}</td>
+                            <td>{{ i.port }}</td>
+                            <td>{% if i.ssl %}<i class="bi bi-shield-fill-x text-danger"></i>{% else %}
+                                <i class="bi bi-shield-fill-check text-success"></i>{% endif %}</td>
+                            <td>{% if i.ssl %}{{ i.ssl }}{% else %}<i class="bi bi-dash"></i>{% endif %}</td>
+                        </tr>
+                    {% endif %}
                 {% endfor %}
                 </tbody>
             </table>
