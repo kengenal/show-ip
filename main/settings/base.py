@@ -1,9 +1,10 @@
 import os
+from pathlib import Path
 
 from django.utils.translation import gettext_lazy as _
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = Path(__file__).resolve(strict=True).parent.parent.parent
 
 INSTALLED_APPS = [
     "django.contrib.auth",
@@ -51,7 +52,7 @@ WSGI_APPLICATION = "main.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
-        "NAME": os.path.join(BASE_DIR, "../../db.sqlite3"),
+        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
     }
 }
 
@@ -79,7 +80,7 @@ AUTH_PASSWORD_VALIDATORS = [
 LANGUAGE_CODE = "en"
 
 LOCALE_PATHS = [
-    os.path.join(BASE_DIR, "../../locale")
+    BASE_DIR / "locale"
 ]
 
 LANGUAGES = (

@@ -11,7 +11,7 @@ class ShowIpForm(forms.Form):
         label=None,
         required=False,
         widget=forms.Textarea(attrs={"class": "form-control",
-                                     "placeholder": _("Url address, you can take many urls using ':' as separator"),
+                                     "placeholder": _("Url address, you can take many urls using ',' as separator"),
                                      'rows': 1, 'cols': 15})
     )
     file = forms.FileField(
