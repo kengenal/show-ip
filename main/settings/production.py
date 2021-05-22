@@ -2,7 +2,7 @@ from .base import *
 
 DEBUG = False
 
-ALLOWED_HOSTS = ["0.0.0.0", "localhost"]
+ALLOWED_HOSTS = ["kengenal.pythonanywhere.com", "localhost"]
 
 SECRET_KEY = os.getenv("SECRET_KEY")
 CSRF_COOKIE_SECURE = True
