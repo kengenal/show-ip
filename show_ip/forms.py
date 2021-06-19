@@ -35,4 +35,4 @@ class ShowIpForm(forms.Form):
                 clear = [x.strip() for x in data if x]
                 self.cleaned_data["addresses"] = clear
         if not self.cleaned_data.get("addresses") and not self.files.get("file"):
-            raise forms.ValidationError(_("Field addresses or file cannot be empty"))
+            raise forms.ValidationError({"addresses": _("Field addresses or file cannot be empty")})
