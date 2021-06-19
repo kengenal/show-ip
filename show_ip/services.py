@@ -9,7 +9,7 @@ from django.core.exceptions import ValidationError
 
 def generate(hostnames):
     for hostname in hostnames:
-        yield get_cert(hostname)
+        yield get_cert(hostname.strip())
 
 
 def get_cert(url, port=443, timeout=None):
