@@ -1,4 +1,5 @@
 import csv
+from abc import ABC
 
 from django.shortcuts import render
 from django.views import generic
@@ -11,15 +12,11 @@ def get_ips(hostnames):
     return [x for x in generate(hostnames)]
 
 
-class ShowIpView(generic.View):
+class BestShowView(ABC, generic.View):
     form_class = ShowIpForm
-    template_name = "show_ip/index.html"
 
-    def get(self, request):
-        return render(request, self.template_name, {"form": self.form_class})
-
-    def post(self, request):
-        form = self.form_class(data=request.POST, files=request.FILES)
+    def form_validate(self, post_data, post_files):
+        form = self.form_class(data=post_data, files=post_files)
         context = {}
         if form.is_valid():
             clean = form.cleaned_data.get("addresses", [])
@@ -36,4 +33,18 @@ class ShowIpView(generic.View):
                                      x.get("errors", "-")])
                 return response
         context["form"] = form
+        return context
+
+
+class ShowIpView(BestShowView):
+    form_class = ShowIpForm
+    template_name = "show_ip/index.html"
+
+    def get(self, request):
+        return render(request, self.template_name, {"form": self.form_class})
+
+    def post(self, request):
+        context = self.form_validate(post_data=request.POST, post_files=request.FILES)
+        if isinstance(context, HttpResponse):
+            return context
         return render(request, self.template_name, context)
