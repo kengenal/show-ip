@@ -47,19 +47,8 @@ class BaseCSVTestCase:
         monkeypatch.setattr(show_ip.views, "get_ips", mock)
 
 
-class BaseShowApiTestCase(ABC, BaseCSVTestCase):
+class BaseShowTestCase(ABC, BaseCSVTestCase):
     url = None
-
-    def test_get_ips_with_addresses_field_should_be_return_template_with_data(self, client, mock_get_ips):
-        rq = client.post(self.url, data={"addresses": "example.pl"})
-
-        assert b"localhost" in rq.content
-        assert rq.status_code == 200
-
-    def test_get_ips_with_empty_variables_should_be_return_ok_with_errors(self, client, mock_get_ips):
-        rq = client.post(self.url, data={"addresses": ""})
-
-        assert rq.status_code == 200
 
     def test_get_ips_with_file_field_should_be_return_template_with_data(self, client, mock_get_ips, load_csv):
         with open(load_csv, 'rb') as file:
