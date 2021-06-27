@@ -7,6 +7,7 @@ authors = ["kengenal"]
 [tool.poetry.dependencies]
 python = "^3.8"
 Django = "^3.2.1"
+gunicorn = "^20.1.0"
 
 [tool.poetry.dev-dependencies]
 pytest-django = "^4.2.0"

@@ -1,0 +1,5 @@
+python manage.py compilemessages
+rm -r static
+python manage.py collectstatic
+
+gunicorn main.wsgi --workers=2 -b 0.0.0.0:8000

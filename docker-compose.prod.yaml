@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: ./build/python-prod/Dockerfile
+    volumes:
+      - ./:/app
+    environment:
+      DJANGO_SETTINGS_MODULE: main.settings.production
+      SECRET_KEY: asdasdasd
+#      USE_SSL: 1
+    networks:
+      - backend
+
+  nginx:
+    image: nginx:stable-alpine
+    working_dir: /app/static
+    volumes:
+      - ./staticfiles/:/app/static/
+      - ./build/nginx/:/etc/nginx/conf.d/
+    networks:
+      - backend
+    ports:
+      - 5000:80
+
+networks:
+  backend:
